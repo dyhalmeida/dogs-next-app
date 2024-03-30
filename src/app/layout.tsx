@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { spectral } from '@/fonts'
+import { Header } from '@/components/Header'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={spectral.variable}>{children}</body>
+      <body className={spectral.variable}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
