@@ -1,0 +1,5 @@
+export const BASE_URL = 'https://dogsapi.origamid.dev/json'
+export const RESOURCE = {
+  AUTH: 'jwt-auth/v1/token',
+  PHOTOS: 'api/photo/?_page=1&_total=6&_user=0',
+}
