@@ -1,7 +1,16 @@
+import { RecoveryLoginForm } from '@/components/RecoveryLoginForm'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Recuperar conta | Dogs',
+  description: 'Recupere sua conta no site Dogs',
+}
+
 export default function RecoveryLoginPage() {
   return (
-    <div>
-      <h1>RecoveryLoginPage</h1>
+    <div className="animeLeft">
+      <h1 className="title">Recuperar senha</h1>
+      <RecoveryLoginForm />
     </div>
   )
 }

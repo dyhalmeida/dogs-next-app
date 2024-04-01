@@ -5,9 +5,14 @@ import { ApiError } from '@/utils/api-error'
 
 const checkFormData = (formData: FormData) => {
   const login = formData.get('login')
+  const url = formData.get('url')
 
   if (!login) {
     throw new Error('E-mail or username is required')
+  }
+
+  if (!url) {
+    throw new Error('Url is required')
   }
 
 }
