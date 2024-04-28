@@ -18,7 +18,7 @@ export const getUser = async () => {
         revalidate: 60,
       },
     })
-    if (!response.ok) throw new Error('user not found')
+    if (!response.ok) throw new Error('unauthorized user')
     const data = (await response.json()) as IUser
     return { data, ok: true, error: '' }
   } catch (error: unknown) {

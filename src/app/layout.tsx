@@ -4,7 +4,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import './globals.css'
 import { UserContextProvider } from '@/context/user-context'
-import { getUser } from '@/server-actions/login/get-user'
+import { getUser } from '@/server-actions/user/get-user'
 
 export const metadata: Metadata = {
   title: 'Dogs App',
