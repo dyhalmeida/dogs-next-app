@@ -7,6 +7,8 @@ import styles from './AccountHeader.module.css'
 import { useMedia } from '@/hooks/use-media'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { logout } from '@/server-actions/user/logout'
+import { useUser } from '@/context/user-context'
 
 const getTitle = (pathname: string) =>
   ({
@@ -30,6 +32,7 @@ export function AccountHeader() {
   const isMobile = useMedia('(max-width: 40rem)')
   const [isOpenMobileMenu, setIsOpenMobileMenu] = React.useState(false)
 
+  const { setUser } = useUser()
   const pathname = usePathname()
 
   const pageTitle = useMemo(() => getTitle(pathname), [pathname])
@@ -41,10 +44,9 @@ export function AccountHeader() {
     setIsOpenMobileMenu(false)
   }, [pathname])
 
-  function handleLogout() {
-    /**
-     * @todo
-     */
+  async function handleLogout() {
+    await logout()
+    setUser(null)
   }
 
   return (

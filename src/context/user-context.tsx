@@ -11,7 +11,7 @@ export interface IUser {
 
 interface IUserContext {
   user: IUser | null
-  setUser: (user: IUser) => void
+  setUser: (user: IUser | null) => void
 }
 
 const UserContext = React.createContext<IUserContext | null>(null)
@@ -35,8 +35,8 @@ export function UserContextProvider({
 }) {
   const [userState, setUserState] = React.useState<IUser | null>(user)
 
-  const setUser = (user: IUser) => {
-    setUserState((prevData) => ({ ...prevData, ...user }))
+  const setUser = (user: IUser | null) => {
+    setUserState(user)
   }
 
   const value = {
