@@ -1,0 +1,9 @@
+.message {
+    color: #444;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.link {
+    display: inline-block;
+}
