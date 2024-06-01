@@ -4,6 +4,9 @@ import { IPhoto } from '@/server-actions/interfaces/photo.interface'
 import { FeedPhotos } from './FeedPhotos'
 import { useEffect, useRef, useState } from 'react'
 import { getPhotos } from '@/server-actions/photos/get-photos'
+import Loading from '@/components/Loading'
+
+import styles from './Feed.module.css'
 
 interface IFeedProps {
   photos: IPhoto[]
@@ -66,7 +69,7 @@ export const Feed = ({ photos, user }: IFeedProps) => {
   return (
     <>
       <FeedPhotos photos={photosFeed} />
-      {isLoading && <p>Carregando...</p>}
+      <div className={styles.loadingWrapper}>{isLoading && <Loading />}</div>
     </>
   )
 }
