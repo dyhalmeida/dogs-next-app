@@ -15,9 +15,9 @@ export default async function AccountPage() {
   const { data: photos } = await getPhotos({ user: user?.username })
 
   return (
-    <main>
+    <section>
       {photos?.length ? (
-        <Feed photos={photos} />
+        <Feed photos={photos} user={user?.username} />
       ) : (
         <div>
           <p className={styles.message}>Nenhuma foto encontrada</p>
@@ -26,6 +26,6 @@ export default async function AccountPage() {
           </Link>
         </div>
       )}
-    </main>
+    </section>
   )
 }

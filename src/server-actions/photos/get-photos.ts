@@ -8,19 +8,22 @@ interface IGetPhotosParams {
   page?: number
   total?: number
   user?: 0 | string
+  options?: RequestInit
 }
 
 export const getPhotos = async ({
   page = 1,
   total = 6,
   user = 0,
+  options,
 }: IGetPhotosParams) => {
   try {
+    const responseOptions = options || {
+      next: { revalidate: 10, tags: ['photos'] },
+    }
     const response = await fetch(
       `${BASE_URL}/${RESOURCE.PHOTOS}/?_page=${page}&_total=${total}&_user=${user}`,
-      {
-        next: { revalidate: 10, tags: ['photos'] },
-      },
+      responseOptions,
     )
     if (!response.ok) throw new Error('Error getting photos')
     const data = (await response.json()) as IPhoto[]
