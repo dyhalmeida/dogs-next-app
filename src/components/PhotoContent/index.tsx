@@ -7,6 +7,7 @@ import { useUser } from '@/context/user-context'
 import Image from 'next/image'
 import { IPhotoData } from '@/server-actions/photos/get-photo'
 import PhotoDelete from '../PhotoDelete'
+import PhotoComments from '../PhotoComments'
 
 const PhotoContent = ({
   data,
@@ -16,7 +17,7 @@ const PhotoContent = ({
   single: boolean
 }) => {
   const { user } = useUser()
-  const { photo } = data
+  const { photo, comments } = data
 
   return (
     <div className={`${styles.photo} ${single ? styles.single : ''}`}>
@@ -42,6 +43,7 @@ const PhotoContent = ({
           </ul>
         </div>
       </div>
+      <PhotoComments single={single} id={photo.id} comments={comments} />
     </div>
   )
 }
