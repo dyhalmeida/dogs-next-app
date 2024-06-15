@@ -1,5 +1,7 @@
 'use client'
 
+import { validateToken } from '@/server-actions/token/validate-token'
+import { logout } from '@/server-actions/user/logout'
 import React from 'react'
 
 export interface IUser {
@@ -43,6 +45,14 @@ export function UserContextProvider({
     user: userState,
     setUser,
   }
+
+  React.useEffect(() => {
+    const validate = async () => {
+      const { ok } = await validateToken()
+      if (!ok) await logout()
+    }
+    if (userState) validate()
+  }, [userState])
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

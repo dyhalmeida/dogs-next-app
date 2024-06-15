@@ -7,4 +7,5 @@ export const RESOURCE = {
   RESET_LOGIN: 'api/password/reset',
   COMMENT: 'api/comment',
   STATS: 'api/stats',
+  TOKEN_VALIDATE: 'jwt-auth/v1/token/validate',
 }
