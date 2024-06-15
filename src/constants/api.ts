@@ -5,4 +5,5 @@ export const RESOURCE = {
   USER: 'api/user',
   RECOVERY_LOGIN: 'api/password/lost',
   RESET_LOGIN: 'api/password/reset',
+  COMMENT: 'api/comment',
 }
