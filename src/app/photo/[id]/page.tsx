@@ -1,12 +1,30 @@
-interface IPhotoIdPageProps {
+import PhotoContent from '@/components/PhotoContent'
+import { getPhoto } from '@/server-actions/photos/get-photo'
+import { notFound } from 'next/navigation'
+
+type IPhotoPageParams = {
   params: {
-    id: number
+    id: string
   }
 }
-export default function PhotoIdPage({ params }: IPhotoIdPageProps) {
+
+export async function generateMetadata({ params }: IPhotoPageParams) {
+  const { data } = await getPhoto(params.id)
+
+  if (!data) return { titlte: 'Fotos' }
+  return {
+    title: data.photo.title,
+  }
+}
+
+export default async function PhotoIdPage({ params }: IPhotoPageParams) {
+  const { data } = await getPhoto(params.id)
+
+  if (!data) return notFound()
+
   return (
-    <div>
-      <h1>PhotoIdPage: {params.id}</h1>
-    </div>
+    <section className="container mainContainer">
+      <PhotoContent data={data} single={true} />
+    </section>
   )
 }
