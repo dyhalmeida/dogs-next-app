@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useUser } from '@/context/user-context'
 import Image from 'next/image'
 import { IPhotoData } from '@/server-actions/photos/get-photo'
+import PhotoDelete from '../PhotoDelete'
 
 const PhotoContent = ({
   data,
@@ -26,7 +27,7 @@ const PhotoContent = ({
         <div>
           <p className={styles.author}>
             {user && user.username === photo.author ? (
-              <p>Deletar</p>
+              <PhotoDelete id={String(data.photo.id)} />
             ) : (
               <Link href={`/profile/${photo.author}`}>@{photo.author}</Link>
             )}
