@@ -3,6 +3,8 @@
 import React from 'react'
 import styles from './PhotoComments.module.css'
 import { IComment } from '@/server-actions/photos/get-photo'
+import PhotoCommentsForm from '../PhotoCommentsForm'
+import { useUser } from '@/context/user-context'
 
 type IPhotoComments = {
   single: boolean
@@ -13,6 +15,7 @@ type IPhotoComments = {
 const PhotoComments = (props: IPhotoComments) => {
   const [comments, setComments] = React.useState(() => props.comments)
   const commentsSection = React.useRef<HTMLUListElement>(null)
+  const { user } = useUser()
 
   React.useEffect(() => {
     if (commentsSection.current) {
@@ -33,6 +36,13 @@ const PhotoComments = (props: IPhotoComments) => {
           </li>
         ))}
       </ul>
+      {user && (
+        <PhotoCommentsForm
+          single={props.single}
+          id={props.id}
+          setComments={setComments}
+        />
+      )}
     </>
   )
 }
