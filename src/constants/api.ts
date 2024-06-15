@@ -6,4 +6,5 @@ export const RESOURCE = {
   RECOVERY_LOGIN: 'api/password/lost',
   RESET_LOGIN: 'api/password/reset',
   COMMENT: 'api/comment',
+  STATS: 'api/stats',
 }
