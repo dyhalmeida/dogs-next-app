@@ -13,8 +13,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  parallelRoute,
 }: Readonly<{
   children: React.ReactNode
+  parallelRoute: React.ReactNode
 }>) {
   const { data: user } = await getUser()
 
@@ -25,6 +27,7 @@ export default async function RootLayout({
           <UserContextProvider user={user}>
             <Header />
             <main className="AppBody">{children}</main>
+            <div>{parallelRoute}</div>
             <Footer />
           </UserContextProvider>
         </div>
